@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Planner de Estudos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>MY DESK</h1>
+            <div class="user-info">
+                <span id="welcomeMessage"></span>
+                <button id="logoutBtn">Sair</button>
+            </div>
+        </div>
+        
+        <nav>
+            <button id="tab-btn-grade" class="active">Grade Horária</button>
+            <button id="tab-btn-semanal">Planner Semanal</button>
+            <button id="tab-btn-diario">Planner Diário</button>
+            <button id="tab-btn-habitos">Hábitos</button>
+        </nav>
+
+        <div class="tabs-container">
+            <div id="content-grade" class="tab-content active">
+                <div class="icon-palette">
+                    Clique para copiar: 
+                    <span class="icon" title="Copiar">🎓</span> <span class="icon" title="Copiar">☕️</span> <span class="icon" title="Copiar">🍽️</span> <span class="icon" title="Copiar">🏋️</span> <span class="icon" title="Copiar">😴</span> <span class="icon" title="Copiar">💻</span> <span class="icon" title="Copiar">📚</span>
+                </div>
+                <table id="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Horário</th>
+                            <th>Segunda-feira</th>
+                            <th>Terça-feira</th>
+                            <th>Quarta-feira</th>
+                            <th>Quinta-feira</th>
+                            <th>Sexta-feira</th>
+                            <th>Sábado</th>
+                            <th>Domingo</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <div class="table-controls">
+                    <button id="addRowBtn">+ Adicionar Horário</button>
+                </div>
+            </div>
+
+            <div id="content-semanal" class="tab-content">
+                <h2>Planner Semanal</h2>
+                <div class="weekly-planner-container"></div>
+            </div>
+
+            <div id="content-diario" class="tab-content">
+                <div class="daily-planner-header">
+                    <h2>Planner Diário para:</h2>
+                    <input type="date" id="dailyDateInput">
+                </div>
+                <div class="daily-columns-container">
+                    <div class="daily-column">
+                        <h3>Prioridades do Dia ✨</h3>
+                        <ul id="prioritiesList" class="daily-list"></ul>
+                        <div class="add-item-form">
+                            <input type="text" id="newPriorityInput" placeholder="Nova prioridade...">
+                            <button id="addPriorityBtn">+</button>
+                        </div>
+                    </div>
+                    <div class="daily-column">
+                        <h3>Lista de Tarefas 📝</h3>
+                        <ul id="todosList" class="daily-list"></ul>
+                        <div class="add-item-form">
+                            <input type="text" id="newTodoInput" placeholder="Nova tarefa...">
+                            <button id="addTodoBtn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content-habitos" class="tab-content">
+                <h2>Tracker de Hábitos</h2>
+                <div class="add-item-form habit-form">
+                    <input type="text" id="newHabitInput" placeholder="Adicionar novo hábito...">
+                    <button id="addHabitBtn">Adicionar Hábito</button>
+                </div>
+                <div class="habits-table-container">
+                    <table id="habits-table">
+                        <thead>
+                            <tr>
+                                <th>Hábito</th>
+                                <th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th><th>Dom</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="habits-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div> 
+
+        <div class="notes-section">
+            <h2>Lembretes & Eventos</h2>
+            <div class="note-input-container">
+                <input type="text" id="noteInput" placeholder="Digite um novo lembrete...">
+                <button id="addNoteBtn">Adicionar</button>
+            </div>
+            <ul id="notesList"></ul>
+        </div>
+    </div>
+
+    <div id="custom-prompt-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h2>Adicionar Novo Horário</h2>
+            <p>Digite o intervalo de tempo (ex: 10:00 - 11:00):</p>
+            <input type="text" id="timeInput" placeholder="HH:MM - HH:MM">
+            <div class="modal-actions">
+                <button class="modal-btn-cancel">Cancelar</button>
+                <button class="modal-btn-confirm" id="confirmAddTimeBtn">OK</button>
+            </div>
+        </div>
+    </div>
+    <div id="custom-confirm-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h2>Confirmar Ação</h2>
+            <p id="confirmMessage">Você tem certeza que deseja remover este item?</p>
+            <div class="modal-actions">
+                <button class="modal-btn-cancel">Cancelar</button>
+                <button class="modal-btn-confirm-danger" id="confirmDeleteBtn">Remover</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    
+    <script src="script.js"></script>
+</body>
+</html>

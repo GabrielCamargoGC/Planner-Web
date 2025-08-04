@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Planner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page">
+
+    <div class="form-container">
+        <h1>Meu Planner</h1>
+        
+        <div id="login-form">
+            <h2>Login</h2>
+            <input type="email" id="loginEmail" placeholder="Email" required>
+            <input type="password" id="loginPassword" placeholder="Senha" required>
+            <button id="loginBtn">Entrar</button>
+            <p>Não tem uma conta? <a href="#" id="showRegister">Registre-se</a></p>
+        </div>
+
+        <div id="register-form" style="display: none;">
+            <h2>Registro</h2>
+            <input type="text" id="registerUsername" placeholder="Nome de usuário" required>
+            <input type="email" id="registerEmail" placeholder="Email" required>
+            <input type="password" id="registerPassword" placeholder="Senha" required>
+            <input type="password" id="registerConfirmPassword" placeholder="Confirme a senha" required>
+            <button id="registerBtn">Registrar</button>
+            <p>Já tem uma conta? <a href="#" id="showLogin">Faça login</a></p>
+        </div>
+        <p id="auth-error" class="error-message"></p>
+        <p id="auth-success" class="success-message"></p>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    
+    <script src="auth.js"></script>
+</body>
+</html>
